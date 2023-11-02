@@ -4,24 +4,36 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h1 class="text-center">Sign Up</h1>
+                <h1 class="text-center">Make a Decision</h1>
                 <form action="" method="post" novalidate>
                     {{ form.hidden_tag() }}
                     <div class="mb-3">
-                        {{ form.email.label(class="form-label") }}
-                        {{ form.email(class="form-control", placeholder="Enter your email") }}
+                        {{ form.what.label(class="form-label") }}
+                        {{ form.what(class="form-control", placeholder="Elaborate as much as possible") }}
                     </div>
                     <div class="mb-3">
-                        {{ form.name.label(class="form-label") }}
-                        {{ form.name(class="form-control", placeholder="Enter your name") }}
+                        {{ form.why.label(class="form-label") }}
+                        {{ form.why(class="form-control", placeholder="Elaborate as much as possible") }}
                     </div>
                     <div class="mb-3">
-                        {{ form.password.label(class="form-label") }}
-                        {{ form.password(class="form-control", placeholder="Enter your password") }}
+                        {{ form.when.label(class="form-label") }}
+                        {{ form.when() }}
                     </div>
                     <div class="mb-3">
-                        {{ form.password_confirmation.label(class="form-label") }}
-                        {{ form.password_confirmation(class="form-control", placeholder="Confirm your password") }}
+                        {{ form.impulsive.label(class="form-label") }}
+                        {{ form.impulsive() }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.confident.label(class="form-label") }}
+                        {{ form.confident() }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.confidence_scale.label(class="form-label") }}
+                        {{ form.confidence_scale() }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.backup.label(class="form-label") }}
+                        {{ form.backup() }}
                     </div>
                     <div class="mb-3 text-center">
                         {{ form.submit(class="btn btn-primary") }}
