@@ -1,0 +1,24 @@
+Tasks
+
+
+
+
+
+
+Questions
+What is the specific decision you need to make?
+
+Why are you making this decision?
+
+What are the objectives? 
+
+Will this decision lead you closer toward your goals in the futuer? (Y/N)
+
+When does this decision need to be made? (Date)
+
+Is this an impulsive decision? (Y/N)
+
+Are you confident about this decision? (Y/N)
+
+Do you have a backup plan if things dont work out? (Y/N)
+

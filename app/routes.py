@@ -25,3 +25,4 @@ def login():
         flash(form.password.data)
         return redirect('/index')
     return render_template('login.html', form=form)
+
