@@ -26,11 +26,16 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
 
-
-
 class Decisions(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    what = db.Column(db.Text)
+    why = db.Column(db.Text)
+    when = db.Column(db.Date)
+    impulsive = db.Column(db.String(3))
+    confident = db.Column(db.String(3))
+    confidence_scale = db.Column(db.Integer)
+    backup = db.Column(db.String(3))
 
 

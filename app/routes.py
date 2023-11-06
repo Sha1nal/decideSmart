@@ -52,6 +52,11 @@ def logout():
 def decision(): 
     form = DecisionForm()
     if form.validate_on_submit():
+        print(form.what.data)
+        print(form.when.data)
+        print(form.confident.data)
+        print(form.backup.data)
+        print(form.confidence_scale.data)
         return redirect('/index')
     return render_template('decisions.html', form=form)
 
