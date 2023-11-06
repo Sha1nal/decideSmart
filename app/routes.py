@@ -1,5 +1,5 @@
 from flask import render_template, redirect, flash
-from app import app
+from app import app, db
 from app.forms import LoginForm, SignUpForm, DecisionForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
@@ -13,12 +13,15 @@ def index():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    if current_user.is_authenticated:
+        return redirect('/index')
     form = SignUpForm()
     if form.validate_on_submit():
-        flash(form.email.data)
-        flash(form.name.data)
-        flash(form.password.data)
-        return redirect('/index')
+        user = User(name=form.name.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        return redirect('/login')
     return render_template('signup.html', form=form)
 
 
@@ -47,8 +50,6 @@ def logout():
 @app.route('/decision', methods=['GET', 'POST'])
 @login_required
 def decision(): 
-    if current_user.is_authenticated:
-        return redirect('/index')
     form = DecisionForm()
     if form.validate_on_submit():
         return redirect('/index')
