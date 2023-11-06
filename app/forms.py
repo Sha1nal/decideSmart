@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import DateField, IntegerField, RadioField, StringField, PasswordField, BooleanField, SubmitField, EmailField, TextAreaField, DateTimeField
-from wtforms.validators import NumberRange, DataRequired, Email, EqualTo
-
+from wtforms.validators import ValidationError, NumberRange, DataRequired, Email, EqualTo
+from app.models import User
 
 class LoginForm(FlaskForm):
     email = EmailField('Email', validators=[DataRequired()])
@@ -15,6 +15,11 @@ class SignUpForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     password_confirmation = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
+
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if user is not None:
+            raise ValidationError('This email address already exists')
 
 
 class DecisionForm(FlaskForm):
