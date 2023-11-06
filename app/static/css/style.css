@@ -1,0 +1,206 @@
+/* Reset for consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variable definitions */
+:root {
+    --text-color: #333;
+    --background-color: #f4f4f4;
+    --section-background: #ffffff;
+    --header-font: 'Open Sans', sans-serif;
+    --body-font: 'Roboto', sans-serif;
+    --border-color: #ddd; /* Light border for elements if needed */
+}
+
+/* Wallpaper background */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    line-height: 1.6;
+    /*background-image: url('/static/images/main_bg_dark.png');*/
+    background-size: cover;
+    background-attachment: fixed; /* Keeps the background image fixed during scroll */
+    padding: 20px;
+}
+
+/* Main content area */
+main {
+    max-width: 1200px;
+    margin: 0 auto; /* Centers the main content */
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px; /* Increased gap for more white space */
+}
+
+/* Section styling */
+section {
+    color: #ffffff; /* Adjust the color to suit your wallpaper and design */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    text-align: center; /* Centers text horizontally */
+    align-items: center; /* Optional: rounds the corners of the section backgrounds */
+}
+
+.container .col, #introduction, #call-to-action {
+    background-color: rgba(255, 255, 255, 0.8); /* Light background with opacity */
+    padding: 20px; /* Spacing around the text */
+    margin: 10px 0; /* Space between the sections */
+    border-radius: 5px; /* Slightly rounded corners for a softer look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+  
+  /* Since the text color is white, this is for better contrast against light background */
+  .container .col h2, #introduction p, #call-to-action h2, #call-to-action p {
+    color: #333; /* Darker text color for contrast */
+  }
+
+.col {
+    color: #ffffff; /* Adjust the color to suit your wallpaper and design */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 5px; 
+}
+
+#introduction {
+    background-color: rgba(255, 255, 255, 0.8); /* Light background for the tagline */
+    border-radius: 5px; /* Rounded corners for the tagline */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    padding: 30px; /* More padding for emphasis */
+    margin: auto; /* Center the introduction section if needed */
+    max-width: 80%; /* You can set a max-width if you want to limit the tagline width */
+  }
+  
+  #introduction p {
+    font-size: 1.5em; /* Larger font size for the tagline */
+    font-weight: bold; /* Bold font weight for the tagline */
+    color: #333; /* Dark color for contrast */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for pop effect */
+}
+
+/*Forms Styling*/
+#decision-form {
+    background-color: rgba(255, 255, 255, 0.8); /* Light background for the tagline */
+    border-radius: 5px; /* Rounded corners for the tagline */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    margin: auto; /* Center the introduction section if needed */
+    padding: 30px; /* More padding for emphasis */
+  }
+
+/* Heading typography */
+header h1,
+h2 {
+    font-family: var(--header-font);
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2em; /* Reduced for better screen-space utilization */
+    text-align: left;
+}
+
+header {
+    background-color: #000;
+    padding: 10px 0;
+  }
+
+h2 {
+    font-size: 1.5em;
+}
+
+/* Paragraphs */
+p {
+    font-size: 1em;
+    /*text-shadow: 2px 2px 4px #000000;*/
+    color: #f4f4f4;
+    margin-bottom: 20px; /* More margin for better readability */
+}
+
+/* Call to Action (CTA) */
+#call-to-action {
+    background-color: rgba(255, 255, 255, 0.8); /* Light background for the tagline */
+    border-radius: 5px; /* Rounded corners for the tagline */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    padding: 30px; /* More padding for emphasis */
+    margin: auto; /* Center the introduction section if needed */
+    max-width: 80%; /* You can set a max-width if you want to limit the tagline width */
+  }
+  
+  #call-to-action p {
+    font-size: 1.5em; /* Larger font size for the tagline */
+    color: #333; /* Dark color for contrast */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for pop effect */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    p {
+        font-size: 0.9em;
+    }
+}
+
+/* Navbar & Footer updates */
+/* ...keep your existing navbar and footer styles... */
+
+
+/* Define additional CSS variables for navbar and footer */
+:root {
+    --navbar-background: var(--background-color);
+    --navbar-text-color: var(--text-color);
+    --footer-background: var(--footer-background);
+    --footer-text-color: var(--footer-text-color);
+}
+
+/* Navbar styling */
+nav.navbar {
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+nav.navbar a.navbar-brand,
+nav.navbar a.nav-link {
+    color: var(--navbar-text-color);
+    transition: color 0.3s ease;
+}
+
+nav.navbar a.nav-link:hover,
+nav.navbar a.nav-link:focus {
+    color: var(--cta-color);
+}
+
+/* Style adjustments for the navbar-toggler (hamburger menu) */
+.navbar-toggler {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}

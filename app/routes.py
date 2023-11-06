@@ -1,6 +1,8 @@
 from flask import render_template, redirect, flash
 from app import app
 from app.forms import LoginForm, SignUpForm, DecisionForm
+from flask_login import current_user, login_user, logout_user, login_required
+from app.models import User
 
 
 @app.route('/')
@@ -22,16 +24,31 @@ def signup():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect('/index')
     form = LoginForm()
     if form.validate_on_submit():
-        flash(form.email.data)
-        flash(form.password.data)
+        user = User.query.filter_by(email=form.email.data).first()
+        if user is None or not user.check_password(form.password.data):
+            flash('Invalid Username or Password')
+            return redirect('/login')
+        login_user(user)
         return redirect('/index')
     return render_template('login.html', form=form)
 
 
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect('/index')
+
+
 @app.route('/decision', methods=['GET', 'POST'])
+@login_required
 def decision(): 
+    if current_user.is_authenticated:
+        return redirect('/index')
     form = DecisionForm()
     if form.validate_on_submit():
         return redirect('/index')
@@ -39,10 +56,12 @@ def decision():
 
 
 @app.route('/analytics', methods=['GET', 'POST'])
+@login_required
 def analytics(): 
     return redirect('/index')
 
 
 @app.route('/history', methods=['GET', 'POST'])
+@login_required
 def history(): 
     return redirect('/index')

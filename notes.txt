@@ -1,4 +1,6 @@
 Tasks
+- Welcome statement
+- Dropdown about what kind of decisions (work related, financial etc)
 
 
 

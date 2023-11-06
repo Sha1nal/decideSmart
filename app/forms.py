@@ -1,18 +1,21 @@
 from flask_wtf import FlaskForm
 from wtforms import DateField, IntegerField, RadioField, StringField, PasswordField, BooleanField, SubmitField, EmailField, TextAreaField, DateTimeField
-from wtforms.validators import NumberRange, DataRequired
+from wtforms.validators import NumberRange, DataRequired, Email, EqualTo
+
 
 class LoginForm(FlaskForm):
     email = EmailField('Email', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Sign In')
 
+
 class SignUpForm(FlaskForm):
-    name = StringField('Name')
-    email = EmailField('Email', validators=[DataRequired()])
+    name = StringField('Name', validators=[DataRequired()])
+    email = EmailField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
-    password_confirmation = PasswordField('Confirm Password', validators=[DataRequired()])
+    password_confirmation = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
+
 
 class DecisionForm(FlaskForm):
     what = TextAreaField('What is the decision you need to make?')
