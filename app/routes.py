@@ -2,7 +2,7 @@ from flask import render_template, redirect, flash
 from app import app, db
 from app.forms import LoginForm, SignUpForm, DecisionForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User
+from app.models import User, Decisions
 
 
 @app.route('/')
@@ -52,11 +52,18 @@ def logout():
 def decision(): 
     form = DecisionForm()
     if form.validate_on_submit():
-        print(form.what.data)
-        print(form.when.data)
-        print(form.confident.data)
-        print(form.backup.data)
-        print(form.confidence_scale.data)
+        new_decision = Decisions(user_id=current_user.id, what=form.what.data,
+                                 why=form.why.data, when=form.when.data, impulsive=form.impulsive.data, 
+                                 confident=form.confident.data, confidence_scale=int(form.confidence_scale.data), 
+                                 backup=form.backup.data)
+        print(new_decision.user_id)
+        print(new_decision.what)
+        print(new_decision.when)
+        print(new_decision.confident)
+        print(new_decision.backup)
+        print(new_decision.confidence_scale)
+        db.session.add(new_decision)
+        db.session.commit()
         return redirect('/index')
     return render_template('decisions.html', form=form)
 
