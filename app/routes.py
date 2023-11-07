@@ -56,12 +56,6 @@ def decision():
                                  why=form.why.data, when=form.when.data, impulsive=form.impulsive.data, 
                                  confident=form.confident.data, confidence_scale=int(form.confidence_scale.data), 
                                  backup=form.backup.data)
-        print(new_decision.user_id)
-        print(new_decision.what)
-        print(new_decision.when)
-        print(new_decision.confident)
-        print(new_decision.backup)
-        print(new_decision.confidence_scale)
         db.session.add(new_decision)
         db.session.commit()
         return redirect('/index')
@@ -77,4 +71,6 @@ def analytics():
 @app.route('/history', methods=['GET', 'POST'])
 @login_required
 def history(): 
-    return redirect('/index')
+    if current_user.is_authenticated:
+        decision_set = current_user.decision.all()
+        return render_template('history.html', decision_set=decision_set)

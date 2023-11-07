@@ -12,6 +12,7 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(64), index=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
+    decision = db.relationship('Decisions', backref='user', lazy='dynamic')
 
 
     def __repr__(self):
