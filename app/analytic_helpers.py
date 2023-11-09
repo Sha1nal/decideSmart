@@ -14,6 +14,7 @@ class Analytics:
         self.results['confidence_scale_avg'] = self.confidence_scale_avg()
         self.results['impulsive_avg'] = self.impulsive_avg()
         self.results['backup_avg'] = self.backup_avg()
+        self.mean_decision_log_time()
 
 
     def confidence_avg(self):
@@ -28,8 +29,6 @@ class Analytics:
         total = 0
         for decision in self.decision_set:
             total += decision.confidence_scale
-        print(total)
-        print(self.num_decisions)
         return round(total/self.num_decisions,1)
     
 
@@ -49,4 +48,15 @@ class Analytics:
         return round(count/self.num_decisions*100,1)
     
 
+    def mean_decision_log_time(self):
+        total_days = 0
+        for decision in self.decision_set:
+            days_between = decision.timestamp.date() - decision.when
+            print(days_between.days)
+            total_days += abs(days_between.days)
+        
+        print(round(total_days/self.num_decisions,2))
+        return round(total_days/self.num_decisions,2)
+
+        
 
