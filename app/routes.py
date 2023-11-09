@@ -1,8 +1,9 @@
-from flask import render_template, redirect, flash
+from flask import render_template, redirect, flash, url_for
 from app import app, db
 from app.forms import LoginForm, SignUpForm, DecisionForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Decisions
+from app.analytic_helpers import Analytics
 
 
 @app.route('/')
@@ -21,22 +22,22 @@ def signup():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        return redirect('/login')
+        return redirect(url_for('login'))
     return render_template('signup.html', form=form)
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect('/index')
+        return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid Username or Password')
-            return redirect('/login')
+            return redirect(url_for('login'))
         login_user(user)
-        return redirect('/index')
+        return redirect(url_for('index'))
     return render_template('login.html', form=form)
 
 
@@ -44,7 +45,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect('/index')
+    return redirect(url_for('login'))
 
 
 @app.route('/decision', methods=['GET', 'POST'])
@@ -58,14 +59,8 @@ def decision():
                                  backup=form.backup.data)
         db.session.add(new_decision)
         db.session.commit()
-        return redirect('/index')
+        return redirect(url_for('index'))
     return render_template('decisions.html', form=form)
-
-
-@app.route('/analytics', methods=['GET', 'POST'])
-@login_required
-def analytics(): 
-    return redirect('/index')
 
 
 @app.route('/history', methods=['GET', 'POST'])
@@ -74,3 +69,20 @@ def history():
     if current_user.is_authenticated:
         decision_set = current_user.decision.all()
         return render_template('history.html', decision_set=decision_set)
+    
+
+@app.route('/analytics', methods=['GET', 'POST'])
+@login_required
+def analytics(): 
+    if current_user.is_authenticated:
+        decision_set = current_user.decision.all()
+
+        for decision in decision_set:
+            print(decision.what)
+
+        user_analytics = Analytics(decision_set)
+
+        print(user_analytics.results)
+    
+    return render_template('analytics.html')
+
