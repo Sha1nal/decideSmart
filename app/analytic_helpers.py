@@ -1,3 +1,5 @@
+import pandas as pd
+
 class Analytics:
 
 
@@ -6,6 +8,8 @@ class Analytics:
         self.num_decisions = len(decision_set_p)
         self.decision_set = decision_set_p
         self.results = {}
+        list_of_data = [u.__dict__ for u in self.decision_set]
+        print(list_of_data)
         self.run_all_functions()
 
 
@@ -14,7 +18,7 @@ class Analytics:
         self.results['confidence_scale_avg'] = self.confidence_scale_avg()
         self.results['impulsive_avg'] = self.impulsive_avg()
         self.results['backup_avg'] = self.backup_avg()
-        self.mean_decision_log_time()
+        self.results['mean_decision_log_time'] = self.mean_decision_log_time()
 
 
     def confidence_avg(self):

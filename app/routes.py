@@ -76,13 +76,7 @@ def history():
 def analytics(): 
     if current_user.is_authenticated:
         decision_set = current_user.decision.all()
-
-        for decision in decision_set:
-            print(decision.what)
-
         user_analytics = Analytics(decision_set)
 
-        print(user_analytics.results)
-    
     return render_template('analytics.html')
 
