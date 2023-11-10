@@ -1,26 +1,27 @@
-Tasks
-- Welcome statement
-- Dropdown about what kind of decisions (work related, financial etc)
+    id = db.Column(db.Integer, primary_key=True)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    what = db.Column(db.Text)
+    why = db.Column(db.Text)
+    when = db.Column(db.Date)
+    impulsive = db.Column(db.String(3))
+    confident = db.Column(db.String(3))
+    confidence_scale = db.Column(db.Integer)
+    backup = db.Column(db.String(3))
 
+    
+    
+    Analytics
+    impulsive - average of how many decisions are impulsive
+    confident - average of how man decions you are confident about
+    con_scale - average of what your confidence scale is
+    backup - average of how many times you had a back up plan
+    mean time between loggin the decision and making the decision
+    Which days are confident decisions made? 
+    Which days and times are impulsive decions made?
 
+    list decions that were confident and had a confidence_scale > 8
 
+    if there was a backup plan was the decion more confident?
 
-
-
-Questions
-What is the specific decision you need to make?
-
-Why are you making this decision?
-
-What are the objectives? 
-
-Will this decision lead you closer toward your goals in the futuer? (Y/N)
-
-When does this decision need to be made? (Date)
-
-Is this an impulsive decision? (Y/N)
-
-Are you confident about this decision? (Y/N)
-
-Do you have a backup plan if things dont work out? (Y/N)
 
