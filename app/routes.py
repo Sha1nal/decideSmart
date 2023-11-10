@@ -77,6 +77,5 @@ def analytics():
     if current_user.is_authenticated:
         decision_set = current_user.decision.all()
         user_analytics = Analytics(decision_set)
-
     return render_template('analytics.html')
 
