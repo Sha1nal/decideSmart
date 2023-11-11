@@ -22,13 +22,14 @@ class Analytics:
         self.results['confidence_scale_avg'] = self.confidence_scale_avg()
         self.results['mean_logging_time'] = self.mean_logging_time()
         self.results['confident_decision_day'], self.results['num_confident_day_count'] = self.confident_days()
+        self.results['impulsive_decision_day'], self.results['num_impulsive_day_count'] = self.impulsive_days()
         print(self.confidence_avg())
         print(self.impulsive_avg())
         print(self.backup_avg())
         print(self.confidence_scale_avg())
         print(self.mean_logging_time())
-        print(self.results['confident_decision_day'])
-        print(self.results['num_confident_day_count'])
+        print(self.confident_days())
+        print(self.impulsive_days())
 
 
     def confidence_avg(self):
@@ -65,3 +66,13 @@ class Analytics:
         most_confident_day = day_counts.index[0]
         times = day_counts.iloc[0]
         return most_confident_day, times
+    
+
+    def impulsive_days(self):
+        self.df['timestamp'] = pd.to_datetime(self.df['timestamp'])
+        self.df['timestamp_day'] = self.df['timestamp'].dt.day_name()
+        filtered_df = self.df[self.df['impulsive'] == 'yes']
+        day_counts = filtered_df['timestamp_day'].value_counts()
+        most_impulsive_day = day_counts.index[0]
+        impulsive_count = day_counts.iloc[0]
+        return most_impulsive_day, impulsive_count
