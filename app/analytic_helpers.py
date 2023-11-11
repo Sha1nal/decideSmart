@@ -23,6 +23,7 @@ class Analytics:
         self.results['mean_logging_time'] = self.mean_logging_time()
         self.results['confident_decision_day'], self.results['num_confident_day_count'] = self.confident_days()
         self.results['impulsive_decision_day'], self.results['num_impulsive_day_count'] = self.impulsive_days()
+        self.results['list_of_confident_decsions'] = self.most_confident_decsions()
         print(self.confidence_avg())
         print(self.impulsive_avg())
         print(self.backup_avg())
@@ -30,6 +31,7 @@ class Analytics:
         print(self.mean_logging_time())
         print(self.confident_days())
         print(self.impulsive_days())
+        print(self.most_confident_decsions())
 
 
     def confidence_avg(self):
@@ -76,3 +78,9 @@ class Analytics:
         most_impulsive_day = day_counts.index[0]
         impulsive_count = day_counts.iloc[0]
         return most_impulsive_day, impulsive_count
+    
+
+    def most_confident_decsions(self):
+        filtered_df = self.df[(self.df['confident'] == 'yes') & (self.df['confidence_scale'] > 7)]
+        list_of_confident_decisions = filtered_df['what']
+        return list_of_confident_decisions
