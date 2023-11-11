@@ -3,7 +3,32 @@
 {% block content %}
 <h1 class="text-center">Summary Statistics</h1>
 
-<p>You logged {{ analytics.total_decisions }} decisions in total</p>
+    <div class="text-center">
+        <div>
+            <h2>Summary</h2>
+            <p>Total Decisions: {{ analytics.total_decisions }}</p>
+            <p>Average Confidence: {{ analytics.confidence_avg }}%</p>
+            <p>Average Impulsiveness: {{ analytics.impulsive_avg }}%</p>
+            <p>Average Backup: {{ analytics.backup_avg }}%</p>
+            <p>Average Confidence Scale: {{ analytics.confidence_scale_avg }}</p>
+            <p>Mean Logging Time: You logged the decision on an average of {{ analytics.mean_logging_time }} days before having to make the decision</p>
+        </div>
+
+        <div>
+            <h2>Details</h2>
+            <p>Most Confident Decision Day: {{ analytics.confident_decision_day }}</p>
+            <p>Number of Confident Decisions on that Day: {{ analytics.num_confident_day_count }}</p>
+            <p>Most Impulsive Decision Day: {{ analytics.impulsive_decision_day }}</p>
+            <p>Number of Impulsive Decisions on that Day: {{ analytics.num_impulsive_day_count }}</p>
+        </div>
+
+        <div>
+            <h2>List of Most Confident Decisions</h2>
+            {% for decision in analytics.list_of_confident_decsions %}
+                <p>{{ decision }}</p>
+            {% endfor %}
+        </div>
+    </div>
 
 
 {% endblock %}

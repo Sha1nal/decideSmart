@@ -171,4 +171,21 @@ body {
       -webkit-overflow-scrolling: touch;
     }
   }
-  
+
+  footer {
+    background-color: #f2f2f2; /* Light gray background */
+    color: #333; /* Dark text */
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.8em;
+    border-top: 1px solid #e2e2e2;
+}
+
+footer a {
+    color: #0066cc; /* Blue link color */
+    text-decoration: none; /* No underline */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
