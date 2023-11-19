@@ -107,4 +107,5 @@ This template displays the analysis of the users decisions.
 ####           3.7.1.1. style.css
 The applications styling is in here. 
 
-## Video Demo:  <URL HERE>
+## Video Demo:  
+https://youtu.be/x3eRjHpjqRY
