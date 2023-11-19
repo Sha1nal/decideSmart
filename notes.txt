@@ -1,9 +1,11 @@
     id = db.Column(db.Integer, primary_key=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    when = db.Column(db.Date)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    
     what = db.Column(db.Text)
     why = db.Column(db.Text)
-    when = db.Column(db.Date)
+
     impulsive = db.Column(db.String(3))
     confident = db.Column(db.String(3))
     confidence_scale = db.Column(db.Integer)
@@ -19,9 +21,7 @@
     mean time between loggin the decision and making the decision
     Which days are confident decisions made? 
     Which days and times are impulsive decions made?
-
     list decions that were confident and had a confidence_scale > 8
 
-    if there was a backup plan was the decion more confident?
 
 

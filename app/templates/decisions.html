@@ -11,30 +11,51 @@
                         <div class="mb-3">
                             {{ form.what.label(class="form-label") }}
                             {{ form.what(class="form-control", placeholder="Elaborate as much as possible") }}
+                            {% for error in form.what.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
                         </div>
                         <div class="mb-3">
                             {{ form.why.label(class="form-label") }}
                             {{ form.why(class="form-control", placeholder="Elaborate as much as possible") }}
+                            {% for error in form.why.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
                         </div>
                         <div class="mb-3">
                             {{ form.when.label(class="form-label") }}
                             {{ form.when() }}
+                            {% for error in form.when.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
                         </div>
                         <div class="mb-3">
                             {{ form.impulsive.label(class="form-label") }}
                             {{ form.impulsive() }}
+                            {% for error in form.impulsive.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
                         </div>
                         <div class="mb-3">
                             {{ form.confident.label(class="form-label") }}
                             {{ form.confident() }}
+                            {% for error in form.confident.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
                         </div>
                         <div class="mb-3">
                             {{ form.confidence_scale.label(class="form-label") }}
                             {{ form.confidence_scale() }}
+                            {% for error in form.confidence_scale.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
                         </div>
                         <div class="mb-3">
                             {{ form.backup.label(class="form-label") }}
                             {{ form.backup() }}
+                            {% for error in form.backup.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
                         </div>
                         <div class="mb-3 text-center">
                             {{ form.submit(class="btn btn-primary") }}

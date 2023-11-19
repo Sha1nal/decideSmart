@@ -17,14 +17,23 @@
                     <div class="mb-3">
                         {{ form.name.label(class="form-label") }}
                         {{ form.name(class="form-control", placeholder="Enter your name") }}
+                        {% for error in form.name.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
                     </div>
                     <div class="mb-3">
                         {{ form.password.label(class="form-label") }}
                         {{ form.password(class="form-control", placeholder="Enter your password") }}
+                        {% for error in form.password.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
                     </div>
                     <div class="mb-3">
                         {{ form.password_confirmation.label(class="form-label") }}
                         {{ form.password_confirmation(class="form-control", placeholder="Confirm your password") }}
+                        {% for error in form.password_confirmation.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
                     </div>
                     <div class="mb-3 text-center">
                         {{ form.submit(class="btn btn-primary") }}

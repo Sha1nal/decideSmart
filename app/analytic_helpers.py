@@ -24,14 +24,6 @@ class Analytics:
         self.results['confident_decision_day'], self.results['num_confident_day_count'] = self.confident_days()
         self.results['impulsive_decision_day'], self.results['num_impulsive_day_count'] = self.impulsive_days()
         self.results['list_of_confident_decsions'] = self.most_confident_decsions()
-        print(self.confidence_avg())
-        print(self.impulsive_avg())
-        print(self.backup_avg())
-        print(self.confidence_scale_avg())
-        print(self.mean_logging_time())
-        print(self.confident_days())
-        print(self.impulsive_days())
-        print(self.most_confident_decsions())
 
 
     def confidence_avg(self):

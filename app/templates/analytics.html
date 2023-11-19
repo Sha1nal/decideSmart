@@ -7,19 +7,19 @@
         <div>
             <h2>Summary</h2>
             <p>Total Decisions: {{ analytics.total_decisions }}</p>
-            <p>Average Confidence: {{ analytics.confidence_avg }}%</p>
-            <p>Average Impulsiveness: {{ analytics.impulsive_avg }}%</p>
-            <p>Average Backup: {{ analytics.backup_avg }}%</p>
-            <p>Average Confidence Scale: {{ analytics.confidence_scale_avg }}</p>
+            <p>Average # of times you made a confident decision: {{ analytics.confidence_avg }}%</p>
+            <p>Average # of time you made an impulsive decision: {{ analytics.impulsive_avg }}%</p>
+            <p>Average # of times you had a backup plan: {{ analytics.backup_avg }}%</p>
+            <p>Average Confidence Rating: {{ analytics.confidence_scale_avg }}</p>
             <p>Mean Logging Time: You logged the decision on an average of {{ analytics.mean_logging_time }} days before having to make the decision</p>
         </div>
 
         <div>
             <h2>Details</h2>
-            <p>Most Confident Decision Day: {{ analytics.confident_decision_day }}</p>
-            <p>Number of Confident Decisions on that Day: {{ analytics.num_confident_day_count }}</p>
-            <p>Most Impulsive Decision Day: {{ analytics.impulsive_decision_day }}</p>
-            <p>Number of Impulsive Decisions on that Day: {{ analytics.num_impulsive_day_count }}</p>
+            <p>The day of the week you seem to make the most confident decsions is {{ analytics.confident_decision_day }}</p>
+            <p>The number of confident decisions made on that day is {{ analytics.num_confident_day_count }}</p>
+            <p>The day of the week you seem to make the most impulsive decsions is {{ analytics.impulsive_decision_day }}</p>
+            <p>The number of impulsive decisions made on that day is {{ analytics.num_impulsive_day_count }}</p>
         </div>
 
         <div>

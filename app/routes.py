@@ -68,6 +68,9 @@ def decision():
 def history(): 
     if current_user.is_authenticated:
         decision_set = current_user.decision.all()
+        if not decision_set:
+            flash('Make a decision first')
+            return redirect(url_for('decision'))
         return render_template('history.html', decision_set=decision_set)
     
 
@@ -76,7 +79,7 @@ def history():
 def analytics(): 
     if current_user.is_authenticated:
         decision_set = current_user.decision.all()
-        if decision_set == None:
+        if not decision_set:
             flash('Make a decision first')
             return redirect(url_for('decision'))
         user_analytics = Analytics(decision_set)
